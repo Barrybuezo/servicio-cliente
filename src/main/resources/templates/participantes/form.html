@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/base :: layout('Nuevo Participante', ~{::div.content})}">
+<body>
+<div class="content">
+    <div class="card shadow-sm p-4 col-md-8 offset-md-2 bg-white">
+        <h3 class="mb-3">Registrar Participante</h3>
+        <form th:action="@{/participantes/guardar}" th:object="${participante}" method="post">
+            <div class="mb-3">
+                <label class="form-label">Nombres</label>
+                <input type="text" th:field="*{nombres}" class="form-control" required/>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Apellidos</label>
+                <input type="text" th:field="*{apellidos}" class="form-control" required/>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Correo Electrónico</label>
+                <input type="email" th:field="*{correo}" class="form-control" required/>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Teléfono</label>
+                <input type="text" th:field="*{telefono}" class="form-control"/>
+            </div>
+            <button type="submit" class="btn btn-success">Guardar Participante</button>
+            <a th:href="@{/participantes}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/base :: layout('Inicio', ~{::div.content})}">
+<body>
+<div class="content">
+    <div class="p-5 mb-4 bg-white rounded-3 shadow-sm">
+        <h1 class="display-5 fw-bold text-primary">Sistema de Inscripciones Antecap</h1>
+        <p class="col-md-8 fs-4 text-muted">Gestión integral de cursos, participantes y matriculación mediante servicios web REST.</p>
+        <hr class="my-4">
+        <div class="row text-center mt-4">
+            <div class="col-md-4">
+                <div class="card border-primary mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-primary" th:text="${totalCursos}">0</h3>
+                        <p class="card-text text-muted">Cursos Registrados</p>
+                        <a th:href="@{/cursos}" class="btn btn-outline-primary btn-sm">Ver Cursos</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-success mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-success" th:text="${totalParticipantes}">0</h3>
+                        <p class="card-text text-muted">Participantes Activos</p>
+                        <a th:href="@{/participantes}" class="btn btn-outline-success btn-sm">Ver Participantes</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-info mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-info" th:text="${totalInscripciones}">0</h3>
+                        <p class="card-text text-muted">Inscripciones Totales</p>
+                        <a th:href="@{/inscripciones}" class="btn btn-outline-info btn-sm">Ver Inscripciones</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

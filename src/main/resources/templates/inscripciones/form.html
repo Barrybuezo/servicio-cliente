@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/base :: layout('Nueva Inscripción', ~{::div.content})}">
+<body>
+<div class="content">
+    <div class="card shadow-sm p-4 col-md-8 offset-md-2 bg-white">
+        <h3 class="mb-3">Matricular Participante en Curso</h3>
+        <form th:action="@{/inscripciones/guardar}" method="post">
+            <div class="mb-3">
+                <label class="form-label">Seleccionar Curso</label>
+                <select name="cursoId" class="form-select" required>
+                    <option value="" disabled selected>-- Elija un curso --</option>
+                    <option th:each="c : ${cursos}" th:value="${c.id}" th:text="${c.nombre + ' (' + c.codigo + ')'}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Seleccionar Participante</label>
+                <select name="participanteId" class="form-select" required>
+                    <option value="" disabled selected>-- Elija un participante --</option>
+                    <option th:each="p : ${participantes}" th:value="${p.id}" th:text="${p.nombres + ' ' + p.apellidos + ' - ' + p.correo}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Completar Inscripción</button>
+            <a th:href="@{/inscripciones}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>

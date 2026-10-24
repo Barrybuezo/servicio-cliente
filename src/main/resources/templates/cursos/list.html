@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/base :: layout('Cursos', ~{::div.content})}">
+<body>
+<div class="content">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Catálogo de Cursos</h2>
+    <a th:href="@{/cursos/nuevo}" class="btn btn-primary">+ Nuevo Curso</a>
+  </div>
+
+  <table class="table table-striped table-hover shadow-sm bg-white rounded">
+    <thead class="table-dark">
+    <tr>
+      <th>Código</th>
+      <th>Nombre</th>
+      <th>Modalidad</th>
+      <th>Cupo</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="c : ${cursos}">
+      <td th:text="${c.codigo}"></td>
+      <td th:text="${c.nombre}"></td>
+      <td><span class="badge bg-secondary" th:text="${c.modalidad}"></span></td>
+      <td th:text="${c.cupo}"></td>
+      <td>
+        <a th:href="@{'/cursos/detalle/' + ${c.id}}" class="btn btn-info btn-sm text-white">Detalle</a>
+        <a th:href="@{'/cursos/eliminar/' + ${c.id}}" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar el curso?')">Eliminar</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/base :: layout('Inscripciones', ~{::div.content})}">
+<body>
+<div class="content">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Historial de Inscripciones</h2>
+        <a th:href="@{/inscripciones/nueva}" class="btn btn-primary">+ Nueva Inscripción</a>
+    </div>
+
+    <table class="table table-striped bg-white shadow-sm rounded">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Curso</th>
+            <th>Participante</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="i : ${inscripciones}">
+            <td th:text="${i.id}"></td>
+            <td th:text="${i.curso.nombre}"></td>
+            <td th:text="${i.participante.nombres + ' ' + i.participante.apellidos}"></td>
+            <td th:text="${i.fechaInscripcion}"></td>
+            <td>
+                <span class="badge" th:classappend="${i.estado == 'ACTIVA' ? 'bg-success' : 'bg-danger'}" th:text="${i.estado}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
